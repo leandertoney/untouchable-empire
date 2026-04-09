@@ -24,7 +24,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://untouchable-empire.netlify.app'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://untouchableempire.netlify.app'),
   title: 'Untouchable Empire | Authentic Sneakers & Premium Products',
   description: 'Premium products, personal service, powerful results. Authentic sneakers, electronics, apparel and more. Local pickup and delivery available. Fast. Reliable. Untouchable.',
   openGraph: {
