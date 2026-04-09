@@ -24,8 +24,33 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://untouchable-empire.netlify.app'),
   title: 'Untouchable Empire | Authentic Sneakers & Premium Products',
   description: 'Premium products, personal service, powerful results. Authentic sneakers, electronics, apparel and more. Local pickup and delivery available. Fast. Reliable. Untouchable.',
+  openGraph: {
+    title: 'Untouchable Empire | Authentic Sneakers & Premium Products',
+    description: 'Brand new kicks at unbeatable prices. Authentic sneakers, electronics, apparel and more. Lancaster, PA.',
+    images: [
+      {
+        url: '/images/untouchable_logo.png',
+        width: 1536,
+        height: 1024,
+        alt: 'Untouchable Empire',
+      },
+    ],
+    siteName: 'Untouchable Empire',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Untouchable Empire | Authentic Sneakers & Premium Products',
+    description: 'Brand new kicks at unbeatable prices. Lancaster, PA.',
+    images: ['/images/untouchable_logo.png'],
+  },
+  icons: {
+    icon: '/images/untouchable_logo.png',
+    apple: '/images/untouchable_logo.png',
+  },
 };
 
 export default function RootLayout({
