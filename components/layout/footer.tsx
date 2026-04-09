@@ -77,6 +77,20 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Untouchable Empire. All rights reserved.
           </p>
         </div>
+
+        <div className="mt-6 text-center">
+          <p className="text-white/20 text-[10px] uppercase tracking-[0.2em]">
+            Built by{' '}
+            <a
+              href="https://universoleappstudios.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/30 hover:text-gold-400 transition-colors"
+            >
+              UNIVERSOLE APP STUDIOS
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );
