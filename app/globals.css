@@ -81,6 +81,21 @@ html {
   animation: neon-flicker 5s ease-in-out infinite;
 }
 
+/* 3D card depth — shadow + border for lifted look */
+.card-3d {
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.4),
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.card-3d:hover {
+  box-shadow:
+    0 8px 16px rgba(0, 0, 0, 0.5),
+    0 20px 50px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(212, 160, 23, 0.15);
+}
+
 /* Marquee scroll animation */
 @keyframes marquee {
   0% {

@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { ShieldCheck, Truck, MapPin, ArrowRight, MessageCircle, AtSign } from 'lucide-react';
+import { ShieldCheck, Truck, MapPin, ArrowRight, MessageCircle, AtSign, Send } from 'lucide-react';
 import ProductCard from '@/components/shop/product-card';
 import { getFeaturedProducts, DEMO_PRODUCTS } from '@/lib/data/demo-products';
 import { SERVICES } from '@/lib/data/services';
@@ -12,9 +12,9 @@ export default function Home() {
   const featured = getFeaturedProducts();
 
   return (
-    <div>
+    <div className="bg-zinc-950">
       {/* ===== HERO ===== */}
-      <section className="relative min-h-screen flex items-center overflow-hidden -mt-[28px]">
+      <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=1920&h=1080&fit=crop"
@@ -26,7 +26,7 @@ export default function Home() {
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-black/40" />
 
         <div className="absolute top-24 right-6 sm:right-10 lg:right-20 z-20 hidden sm:block">
           <NeonSign />
@@ -45,11 +45,11 @@ export default function Home() {
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/products"
-                className="bg-gold-500 hover:bg-gold-400 text-black font-bold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,160,23,0.3)] flex items-center gap-2 text-sm uppercase tracking-wider"
+                className="bg-gold-500 hover:bg-gold-400 text-black font-bold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,160,23,0.3)] hover:-translate-y-0.5 flex items-center gap-2 text-sm uppercase tracking-wider"
               >
                 Shop Now <ArrowRight className="w-4 h-4" />
               </Link>
-              <button className="border border-white/30 hover:border-gold-500/50 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 flex items-center gap-2 text-sm uppercase tracking-wider backdrop-blur-sm">
+              <button className="border border-white/30 hover:border-gold-500/50 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2 text-sm uppercase tracking-wider backdrop-blur-sm">
                 <MessageCircle className="w-4 h-4" />
                 Ask Us Anything
               </button>
@@ -59,7 +59,7 @@ export default function Home() {
       </section>
 
       {/* ===== TRUST STRIP ===== */}
-      <section className="py-6 bg-zinc-950 border-y border-white/5">
+      <section className="py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center gap-8 sm:gap-16">
             <div className="flex items-center gap-2">
@@ -78,7 +78,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== RECENTLY SOLD — sneaker-focused grid ===== */}
+      {/* ===== RECENTLY SOLD ===== */}
       <section className="py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between mb-8">
@@ -100,23 +100,23 @@ export default function Home() {
       </section>
 
       {/* ===== SECOND SNEAKER BANNER ===== */}
-      <section className="relative h-[40vh] sm:h-[50vh] flex items-center overflow-hidden">
+      <section className="relative h-[40vh] sm:h-[50vh] flex items-center overflow-hidden mx-4 sm:mx-8 lg:mx-16 rounded-2xl card-3d">
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1597045566677-8cf032ed6634?w=1920&h=800&fit=crop"
             alt="Jordan Collection"
             fill
             sizes="100vw"
-            className="object-cover"
+            className="object-cover rounded-2xl"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent rounded-2xl" />
+        <div className="relative z-10 max-w-7xl mx-auto px-8 sm:px-12 lg:px-16">
           <p className="text-gold-400 text-xs uppercase tracking-[0.2em] mb-2">Below Retail, Every Time</p>
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">The Hottest Drops.<br />Before They Sell Out.</h2>
           <Link
             href="/products"
-            className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-black font-bold px-6 py-3 rounded-full transition-all text-sm uppercase tracking-wider"
+            className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-black font-bold px-6 py-3 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(212,160,23,0.3)] text-sm uppercase tracking-wider"
           >
             Browse Collection <ArrowRight className="w-4 h-4" />
           </Link>
@@ -141,8 +141,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== SERVICES — Card grid linking to individual pages ===== */}
-      <section id="services" className="py-14 sm:py-20 bg-zinc-950">
+      {/* ===== REQUEST CTA ===== */}
+      <section className="py-14 sm:py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="card-3d rounded-2xl border border-gold-500/20 bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 sm:p-12 text-center">
+            <p className="text-gold-400 text-xs uppercase tracking-[0.2em] mb-2">Can&apos;t Find Your Size?</p>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-3">Request Any Shoe</h2>
+            <p className="text-white/50 mb-8">
+              Tell us what you need &mdash; we&apos;ll source it and deliver it to you. No upfront cost.
+            </p>
+            <Link
+              href="/request"
+              className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-black font-bold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(212,160,23,0.3)] text-sm uppercase tracking-wider"
+            >
+              <Send className="w-4 h-4" />
+              Request a Shoe
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== SERVICES ===== */}
+      <section id="services" className="py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <p className="text-gold-400 text-xs uppercase tracking-[0.2em] mb-1">More Than Sneakers</p>
@@ -154,7 +174,7 @@ export default function Home() {
               <Link
                 key={service.slug}
                 href={`/services/${service.slug}`}
-                className="group relative h-48 rounded-xl overflow-hidden border border-white/5 hover:border-gold-500/30 transition-all duration-300"
+                className="group relative h-48 rounded-xl overflow-hidden card-3d hover:-translate-y-1 transition-all duration-300"
               >
                 <Image
                   src={service.image_url}
@@ -186,11 +206,11 @@ export default function Home() {
       </section>
 
       {/* ===== CONTACT ===== */}
-      <section id="contact" className="py-14 sm:py-20 bg-zinc-950">
+      <section id="contact" className="py-14 sm:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold mb-6">Ready to Order?</h2>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="bg-gold-500 hover:bg-gold-400 text-black font-bold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,160,23,0.3)] flex items-center gap-2 text-sm uppercase tracking-wider">
+            <button className="bg-gold-500 hover:bg-gold-400 text-black font-bold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(212,160,23,0.3)] flex items-center gap-2 text-sm uppercase tracking-wider">
               <MessageCircle className="w-4 h-4" />
               Chat With Us
             </button>
@@ -198,7 +218,7 @@ export default function Home() {
               href="https://instagram.com/untouchableservices"
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-white/20 hover:border-gold-500/50 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 flex items-center gap-2 text-sm uppercase tracking-wider"
+              className="border border-white/20 hover:border-gold-500/50 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2 text-sm uppercase tracking-wider"
             >
               <AtSign className="w-4 h-4" />
               @untouchableservices

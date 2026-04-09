@@ -26,7 +26,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed top-[28px] left-0 right-0 z-50 bg-transparent">
+    <nav className="bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
@@ -36,7 +36,7 @@ export default function Navbar() {
               alt="Untouchable Empire"
               width={80}
               height={80}
-              className="rounded"
+              className="rounded mix-blend-lighten"
             />
             <span className="hidden sm:block text-gradient-gold font-bold text-lg tracking-wide">
               UNTOUCHABLE EMPIRE
@@ -78,11 +78,11 @@ export default function Navbar() {
               )}
             </div>
 
+            <Link href="/request" className="text-gold-400 hover:text-gold-300 transition-colors text-sm uppercase tracking-wider font-semibold">
+              Request a Shoe
+            </Link>
             <Link href="/#about" className="text-white/70 hover:text-gold-400 transition-colors text-sm uppercase tracking-wider">
               About
-            </Link>
-            <Link href="/#contact" className="text-white/70 hover:text-gold-400 transition-colors text-sm uppercase tracking-wider">
-              Contact
             </Link>
           </div>
 
@@ -141,11 +141,11 @@ export default function Navbar() {
               </div>
             )}
 
+            <Link href="/request" onClick={() => setMobileOpen(false)} className="block text-gold-400 hover:text-gold-300 transition-colors text-sm uppercase tracking-wider py-2.5 font-semibold">
+              Request a Shoe
+            </Link>
             <Link href="/#about" onClick={() => setMobileOpen(false)} className="block text-white/70 hover:text-gold-400 transition-colors text-sm uppercase tracking-wider py-2.5">
               About
-            </Link>
-            <Link href="/#contact" onClick={() => setMobileOpen(false)} className="block text-white/70 hover:text-gold-400 transition-colors text-sm uppercase tracking-wider py-2.5">
-              Contact
             </Link>
           </div>
         </div>

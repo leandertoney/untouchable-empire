@@ -12,7 +12,7 @@ export default function ProductCard({ product }: { product: Product }) {
   const isSoldOut = product.stock_quantity === 0;
 
   return (
-    <div className="group bg-zinc-900 rounded-xl border border-white/5 overflow-hidden hover-gold-glow transition-all duration-300">
+    <div className="group bg-zinc-900 rounded-xl overflow-hidden card-3d hover:-translate-y-1 transition-all duration-300">
       <Link href={`/products/${product.slug}`}>
         <div className="aspect-square bg-zinc-800 relative overflow-hidden">
           {product.image_urls.length > 0 ? (

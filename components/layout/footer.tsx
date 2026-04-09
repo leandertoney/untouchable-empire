@@ -4,7 +4,7 @@ import { AtSign, MessageCircle, Mail } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-black border-t border-white/10">
+    <footer className="bg-zinc-950 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
@@ -14,7 +14,7 @@ export default function Footer() {
               alt="Untouchable Empire"
               width={80}
               height={80}
-              className="rounded mb-4"
+              className="rounded mb-4 mix-blend-lighten"
             />
             <p className="text-white/50 text-sm leading-relaxed">
               Premium Products. Personal Service. Powerful Results.

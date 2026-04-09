@@ -100,3 +100,30 @@ export interface CreateProductPayload {
   authenticity_notes?: string;
   image_urls?: string[];
 }
+
+export interface ShoeRequest {
+  id: string;
+  customer_name: string;
+  customer_email: string;
+  customer_phone: string | null;
+  shoe_name: string;
+  brand: string | null;
+  style_code: string | null;
+  size: string;
+  max_price: number | null;
+  notes: string | null;
+  status: 'new' | 'contacted' | 'sourcing' | 'fulfilled' | 'closed';
+  created_at: string;
+}
+
+export interface CreateShoeRequestPayload {
+  customer_name: string;
+  customer_email: string;
+  customer_phone?: string;
+  shoe_name: string;
+  brand?: string;
+  style_code?: string;
+  size: string;
+  max_price?: number;
+  notes?: string;
+}

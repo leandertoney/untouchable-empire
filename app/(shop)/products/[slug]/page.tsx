@@ -3,7 +3,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ShoppingBag, ShieldCheck, Truck, MapPin, ArrowLeft, Check } from 'lucide-react';
+import { ShoppingBag, ShieldCheck, Truck, MapPin, ArrowLeft, Check, Send } from 'lucide-react';
 import { getDemoProduct } from '@/lib/data/demo-products';
 import { formatPrice } from '@/lib/utils';
 import { useCart } from '@/lib/context/cart-context';
@@ -170,12 +170,18 @@ export default function ProductDetailPage({
                 )}
               </button>
             ) : (
-              <button
-                disabled
-                className="w-full bg-zinc-800 text-white/30 font-bold py-4 rounded-xl text-sm uppercase tracking-wider cursor-not-allowed"
-              >
-                Sold Out
-              </button>
+              <div className="space-y-3">
+                <div className="w-full bg-zinc-800 text-white/30 font-bold py-4 rounded-xl text-sm uppercase tracking-wider text-center">
+                  Sold Out
+                </div>
+                <Link
+                  href={`/request?shoe=${encodeURIComponent(product.name)}&brand=${encodeURIComponent(product.brand || '')}&style=${encodeURIComponent(product.sku || '')}`}
+                  className="w-full bg-gold-500/10 border border-gold-500/30 hover:bg-gold-500/20 text-gold-400 font-bold py-4 rounded-xl text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-colors"
+                >
+                  <Send className="w-4 h-4" />
+                  Request This Shoe
+                </Link>
+              </div>
             )}
 
             {!isSoldOut && product.stock_quantity <= 3 && (

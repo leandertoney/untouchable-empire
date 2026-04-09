@@ -32,6 +32,12 @@ export default function AdminLayout({
             >
               Orders
             </a>
+            <a
+              href="/admin/requests"
+              className="block px-3 py-2 rounded-lg text-white/60 hover:text-white hover:bg-white/5 text-sm transition-colors"
+            >
+              Requests
+            </a>
           </nav>
 
           <div className="pt-4 border-t border-white/10">
@@ -55,6 +61,7 @@ export default function AdminLayout({
               <a href="/admin" className="text-white/50 hover:text-white text-xs">Dashboard</a>
               <a href="/admin/inventory" className="text-white/50 hover:text-white text-xs">Inventory</a>
               <a href="/admin/orders" className="text-white/50 hover:text-white text-xs">Orders</a>
+              <a href="/admin/requests" className="text-white/50 hover:text-white text-xs">Requests</a>
             </div>
           </div>
           {children}

@@ -41,7 +41,7 @@ export default function RootLayout({
         <CartProvider>
           <Marquee />
           <Navbar />
-          <main className="pt-[28px]">
+          <main>
             {children}
           </main>
           <Footer />
