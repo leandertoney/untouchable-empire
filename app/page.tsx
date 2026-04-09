@@ -28,11 +28,11 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/30" />
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-black/40" />
 
-        <div className="absolute top-24 right-6 sm:right-10 lg:right-20 z-20 hidden sm:block">
+        <div className="absolute top-32 sm:top-36 right-6 sm:right-10 lg:right-20 z-20 hidden sm:block">
           <NeonSign />
         </div>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 pb-20">
           <div className="max-w-xl">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-4">
               <span className="text-gradient-gold">Brand New Kicks.</span>
@@ -134,7 +134,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-            {DEMO_PRODUCTS.slice(4).map(product => (
+            {DEMO_PRODUCTS.slice(4, 8).map(product => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
