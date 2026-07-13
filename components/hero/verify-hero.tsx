@@ -21,8 +21,8 @@ export function VerifyHero() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const t = requestAnimationFrame(() => setMounted(true));
-    return () => cancelAnimationFrame(t);
+    const t = setTimeout(() => setMounted(true), 50);
+    return () => clearTimeout(t);
   }, []);
 
   useEffect(() => {
@@ -61,42 +61,44 @@ export function VerifyHero() {
 
   return (
     <section ref={stageRef} className="relative" style={{ height: `${N * 100}vh` }}>
-      <div className="sticky top-0 h-screen w-full overflow-hidden bg-black text-white">
-        {IMAGES.map((src, i) => {
-          const dist = Math.abs(raw - i);
-          const opacity = stageOpacity(dist);
-          const signedDist = raw - i;
-          const scale = 1 + Math.min(1, Math.abs(signedDist)) * 0.06;
-          const translateX = Math.max(-1, Math.min(1, signedDist)) * 3;
-          return (
-            <div
-              key={src}
-              className="absolute inset-0"
-              style={{ opacity, zIndex: i }}
-            >
-              <Image
-                src={src}
-                alt={STORE_CONFIG.name}
-                fill
-                priority={i === 0}
-                className="object-cover"
-                style={{ transform: `scale(${scale}) translateX(${translateX}%)` }}
-              />
-            </div>
-          );
-        })}
+      <div className="sticky top-0 h-screen w-full overflow-hidden bg-black text-white flex flex-col">
+        <div className="relative w-full" style={{ height: '76vh' }}>
+          {IMAGES.map((src, i) => {
+            const dist = Math.abs(raw - i);
+            const opacity = stageOpacity(dist);
+            const signedDist = raw - i;
+            const scale = 1 + Math.min(1, Math.abs(signedDist)) * 0.06;
+            const translateX = Math.max(-1, Math.min(1, signedDist)) * 3;
+            return (
+              <div
+                key={src}
+                className="absolute inset-0"
+                style={{ opacity, zIndex: i }}
+              >
+                <Image
+                  src={src}
+                  alt={STORE_CONFIG.name}
+                  fill
+                  priority={i === 0}
+                  className="object-cover"
+                  style={{ transform: `scale(${scale}) translateX(${translateX}%)` }}
+                />
+              </div>
+            );
+          })}
+        </div>
 
         <div
-          className={`absolute inset-0 flex flex-col items-center justify-end pb-20 sm:pb-28 px-6 text-center transition-all duration-700 ease-out ${mounted ? 'translate-y-0' : 'translate-y-6'}`}
+          className={`flex-1 flex flex-col items-center justify-center px-6 text-center transition-all duration-700 ease-out ${mounted ? 'translate-y-0' : 'translate-y-6'}`}
           style={{ opacity: mounted ? introOpacity : 0 }}
         >
-          <p className="text-xs sm:text-sm font-medium tracking-[0.25em] uppercase text-white/60 mb-5">
-            Untouchable prices. 100% authentic.
-          </p>
-          <h1 className="font-sans font-semibold text-[13vw] leading-[0.92] tracking-tight sm:text-[72px] lg:text-[88px]">
-            {STORE_CONFIG.name}
+          <h1 className="font-sans font-semibold text-[9vw] leading-[1] tracking-tight sm:text-[44px] lg:text-[56px]">
+            Untouchable Prices.
           </h1>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <p className="mt-3 text-xs sm:text-sm font-medium tracking-[0.25em] uppercase text-white/60">
+            100% Authentic
+          </p>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/products"
               className="inline-flex items-center justify-center rounded-full bg-white text-black px-7 py-3.5 text-sm font-semibold tracking-wide hover:bg-neutral-200 transition-colors"
@@ -113,7 +115,7 @@ export function VerifyHero() {
         </div>
 
         <p
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[11px] uppercase tracking-[0.2em] text-white/40"
+          className="pb-4 text-center text-[11px] uppercase tracking-[0.2em] text-white/40"
           style={{ opacity: mounted ? introOpacity : 0 }}
         >
           Scroll to explore
