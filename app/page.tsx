@@ -1,9 +1,10 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Send, ShieldCheck, Truck, Repeat } from 'lucide-react';
-import { LightHero } from '@/components/hero/light-hero';
+import { VerifyHero, HERO_STAGE_COUNT } from '@/components/hero/verify-hero';
 import ProductTileLight from '@/components/shop/product-tile-light';
 import { Reveal } from '@/components/reveal';
 import { getFeaturedProducts } from '@/lib/data/demo-products';
@@ -12,37 +13,53 @@ import { STORE_CONFIG } from '@/config/store';
 
 export default function Home() {
   const featured = getFeaturedProducts();
+  const [pastHero, setPastHero] = useState(false);
+
+  useEffect(() => {
+    function onScroll() {
+      setPastHero(window.scrollY > window.innerHeight * HERO_STAGE_COUNT - 80);
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
     <div className="home-light bg-white text-black">
       {/* ===== NAV ===== */}
-      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-neutral-200">
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+          pastHero ? 'bg-white/90 backdrop-blur border-b border-neutral-200 text-black' : 'bg-transparent text-white'
+        }`}
+      >
         <div className="mx-auto max-w-7xl px-6 sm:px-10 h-16 flex items-center justify-between">
           <span className="font-semibold tracking-tight text-lg">{STORE_CONFIG.name}</span>
-          <div className="hidden md:flex items-center gap-8 text-sm text-neutral-600">
-            <a href="#guarantee" className="hover:text-black transition-colors">The guarantee</a>
-            <a href="#inventory" className="hover:text-black transition-colors">Shop</a>
-            <a href="#services" className="hover:text-black transition-colors">Services</a>
-            <a href="#about" className="hover:text-black transition-colors">About</a>
+          <div className={`hidden md:flex items-center gap-8 text-sm ${pastHero ? 'text-neutral-600' : 'text-white/80'}`}>
+            <a href="#guarantee" className="hover:opacity-70 transition-opacity">The guarantee</a>
+            <a href="#inventory" className="hover:opacity-70 transition-opacity">Shop</a>
+            <a href="#services" className="hover:opacity-70 transition-opacity">Services</a>
+            <a href="#about" className="hover:opacity-70 transition-opacity">About</a>
           </div>
           <Link
             href="/products"
-            className="rounded-full bg-black text-white text-sm font-semibold px-5 py-2.5 hover:bg-neutral-800 transition-colors"
+            className={`rounded-full text-sm font-semibold px-5 py-2.5 transition-colors ${
+              pastHero ? 'bg-black text-white hover:bg-neutral-800' : 'bg-white text-black hover:bg-neutral-200'
+            }`}
           >
             Shop now
           </Link>
         </div>
       </nav>
 
-      {/* ===== HERO (3D) ===== */}
-      <LightHero />
+      {/* ===== HERO (scroll-scrub verification) ===== */}
+      <VerifyHero />
 
       {/* ===== TRUST STRIP ===== */}
       <section className="border-y border-neutral-200 bg-neutral-50">
         <Reveal className="mx-auto max-w-7xl px-6 sm:px-10 py-6 grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">
           <div className="flex items-center gap-3">
             <ShieldCheck className="w-5 h-5 text-neutral-500 shrink-0" />
-            <span>Every pair verified before it ships</span>
+            <span>Untouchable prices, every pair verified</span>
           </div>
           <div className="flex items-center gap-3">
             <Repeat className="w-5 h-5 text-neutral-500 shrink-0" />
