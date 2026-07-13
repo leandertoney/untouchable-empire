@@ -43,7 +43,7 @@ const emptyForm: ProductForm = {
   gender: 'mens',
   description: '',
   release_date: '',
-  authenticity_notes: '100% Authentic. Verified by Untouchable Empire.',
+  authenticity_notes: '100% Authentic. Verified by Untouchable Deals.',
   pickup_available: true,
   delivery_available: true,
   is_featured: false,

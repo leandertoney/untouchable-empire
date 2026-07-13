@@ -108,3 +108,8 @@ html {
 .animate-marquee {
   animation: marquee 120s linear infinite;
 }
+
+body:has(.home-light) {
+  background: #fff;
+  color: #000;
+}

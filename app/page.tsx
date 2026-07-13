@@ -1,180 +1,199 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
-import { ShieldCheck, Truck, MapPin, ArrowRight, MessageCircle, AtSign, Send } from 'lucide-react';
-import ProductCard from '@/components/shop/product-card';
-import { getFeaturedProducts, DEMO_PRODUCTS } from '@/lib/data/demo-products';
+import Image from 'next/image';
+import { ArrowRight, Send, ShieldCheck, Truck, Repeat } from 'lucide-react';
+import { LightHero } from '@/components/hero/light-hero';
+import ProductTileLight from '@/components/shop/product-tile-light';
+import { Reveal } from '@/components/reveal';
+import { getFeaturedProducts } from '@/lib/data/demo-products';
 import { SERVICES } from '@/lib/data/services';
-import NeonSign from '@/components/ui/neon-sign';
+import { STORE_CONFIG } from '@/config/store';
 
 export default function Home() {
   const featured = getFeaturedProducts();
 
   return (
-    <div className="bg-zinc-950">
-      {/* ===== HERO ===== */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=1920&h=1080&fit=crop"
-            alt="Premium Sneakers"
-            fill
-            sizes="100vw"
-            className="object-cover"
-            priority
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-black/40" />
-
-        <div className="absolute top-32 sm:top-36 right-6 sm:right-10 lg:right-20 z-20 hidden sm:block">
-          <NeonSign />
-        </div>
-
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-36 pb-20">
-          <div className="max-w-xl">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-4">
-              <span className="text-gradient-gold">Brand New Kicks.</span>
-              <br />
-              <span className="text-white">Unbeatable Prices.</span>
-            </h1>
-            <p className="text-white/60 text-lg sm:text-xl mb-8">
-              Steals on the hottest sneakers &mdash; always new, always below retail. Lancaster, PA.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="/products"
-                className="bg-gold-500 hover:bg-gold-400 text-black font-bold px-8 py-4 rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(212,160,23,0.3)] hover:-translate-y-0.5 flex items-center gap-2 text-sm uppercase tracking-wider"
-              >
-                Shop Now <ArrowRight className="w-4 h-4" />
-              </Link>
-              <button className="border border-white/30 hover:border-gold-500/50 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2 text-sm uppercase tracking-wider backdrop-blur-sm">
-                <MessageCircle className="w-4 h-4" />
-                Ask Us Anything
-              </button>
-            </div>
+    <div className="home-light bg-white text-black">
+      {/* ===== NAV ===== */}
+      <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-neutral-200">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 h-16 flex items-center justify-between">
+          <span className="font-semibold tracking-tight text-lg">{STORE_CONFIG.name}</span>
+          <div className="hidden md:flex items-center gap-8 text-sm text-neutral-600">
+            <a href="#guarantee" className="hover:text-black transition-colors">The guarantee</a>
+            <a href="#inventory" className="hover:text-black transition-colors">Shop</a>
+            <a href="#services" className="hover:text-black transition-colors">Services</a>
+            <a href="#about" className="hover:text-black transition-colors">About</a>
           </div>
-        </div>
-      </section>
-
-      {/* ===== TRUST STRIP ===== */}
-      <section className="py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-center gap-8 sm:gap-16">
-            <div className="flex items-center gap-2">
-              <ShieldCheck className="w-5 h-5 text-gold-500" />
-              <span className="text-white/60 text-xs sm:text-sm">100% Authentic</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <MapPin className="w-5 h-5 text-gold-500" />
-              <span className="text-white/60 text-xs sm:text-sm">Local Pickup</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Truck className="w-5 h-5 text-gold-500" />
-              <span className="text-white/60 text-xs sm:text-sm">Free Local Delivery</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== RECENTLY SOLD ===== */}
-      <section className="py-14 sm:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-8">
-            <div>
-              <p className="text-gold-400 text-xs uppercase tracking-[0.2em] mb-1">Previously in Stock</p>
-              <h2 className="text-2xl sm:text-3xl font-bold">Recently Sold</h2>
-            </div>
-            <Link href="/products" className="flex items-center gap-1 text-gold-400 hover:text-gold-300 transition-colors text-sm">
-              View All <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {featured.map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== SECOND SNEAKER BANNER ===== */}
-      <section className="relative h-[40vh] sm:h-[50vh] flex items-center overflow-hidden mx-4 sm:mx-8 lg:mx-16 rounded-2xl card-3d">
-        <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1597045566677-8cf032ed6634?w=1920&h=800&fit=crop"
-            alt="Jordan Collection"
-            fill
-            sizes="100vw"
-            className="object-cover rounded-2xl"
-          />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent rounded-2xl" />
-        <div className="relative z-10 max-w-7xl mx-auto px-8 sm:px-12 lg:px-16">
-          <p className="text-gold-400 text-xs uppercase tracking-[0.2em] mb-2">Below Retail, Every Time</p>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">The Hottest Drops.<br />Before They Sell Out.</h2>
           <Link
             href="/products"
-            className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-black font-bold px-6 py-3 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(212,160,23,0.3)] text-sm uppercase tracking-wider"
+            className="rounded-full bg-black text-white text-sm font-semibold px-5 py-2.5 hover:bg-neutral-800 transition-colors"
           >
-            Browse Collection <ArrowRight className="w-4 h-4" />
+            Shop now
           </Link>
+        </div>
+      </nav>
+
+      {/* ===== HERO (3D) ===== */}
+      <LightHero />
+
+      {/* ===== TRUST STRIP ===== */}
+      <section className="border-y border-neutral-200 bg-neutral-50">
+        <Reveal className="mx-auto max-w-7xl px-6 sm:px-10 py-6 grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">
+          <div className="flex items-center gap-3">
+            <ShieldCheck className="w-5 h-5 text-neutral-500 shrink-0" />
+            <span>Every pair verified before it ships</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <Repeat className="w-5 h-5 text-neutral-500 shrink-0" />
+            <span>New inventory arriving weekly</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <Truck className="w-5 h-5 text-neutral-500 shrink-0" />
+            <span>Free local pickup or delivery, {STORE_CONFIG.location}</span>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* ===== GUARANTEE ===== */}
+      <section id="guarantee" className="mx-auto max-w-7xl px-6 sm:px-10 py-20 sm:py-28 grid lg:grid-cols-2 gap-12 items-center">
+        <Reveal>
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-neutral-400 mb-4">The guarantee</p>
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight">
+            100% authentic, or your money back.
+          </h2>
+          <p className="mt-5 text-neutral-600 leading-relaxed max-w-md">
+            Every pair is checked before it ships. Not real, not sold, no exceptions.
+            Most pairs come with their original box; anything missing a lid is always
+            noted on the product page.
+          </p>
+        </Reveal>
+        <Reveal delay={120} className="aspect-[4/5] rounded-2xl overflow-hidden bg-neutral-100 relative">
+          <Image
+            src="/images/products/jordan-1-chicago-lost-found.jpeg"
+            alt="Verified authentic sneaker, checked before it ships"
+            fill
+            className="object-cover"
+          />
+        </Reveal>
+      </section>
+
+      {/* ===== INVENTORY BAND ===== */}
+      <section className="bg-black text-white">
+        <Reveal className="mx-auto max-w-7xl px-6 sm:px-10 py-16 sm:py-20 text-center">
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-neutral-400 mb-4">Always moving</p>
+          <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight">New pairs, every week.</h2>
+        </Reveal>
+      </section>
+
+      {/* ===== CHECK / DETAIL ===== */}
+      <section className="mx-auto max-w-7xl px-6 sm:px-10 py-20 sm:py-28 grid lg:grid-cols-2 gap-12 items-center">
+        <Reveal className="order-2 lg:order-1 aspect-[4/5] rounded-2xl overflow-hidden bg-neutral-100 relative">
+          <Image
+            src="/images/products/jordan-4-bred-reimagined.png"
+            alt="Macro detail of verified sneaker leather and stitching"
+            fill
+            className="object-cover"
+          />
+        </Reveal>
+        <Reveal delay={120} className="order-1 lg:order-2">
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-neutral-400 mb-4">The check</p>
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight leading-tight">
+            Verified before it ships.
+          </h2>
+          <p className="mt-5 text-neutral-600 leading-relaxed max-w-md">
+            Retros, Nike, Adidas, streetwear: every pair checked for authenticity
+            before it reaches you. If it&apos;s not real, it doesn&apos;t sell.
+          </p>
+        </Reveal>
+      </section>
+
+      {/* ===== FEATURE ROWS ===== */}
+      <section className="border-t border-neutral-200">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 divide-y divide-neutral-200">
+          {[
+            { n: 'Guarantee', h: '100% authentic or refunded', p: 'Every pair verified before it ships. No fakes, no exceptions, money back if it is ever wrong.' },
+            { n: 'Catalog', h: 'Jordans, Nike, Adidas, streetwear', p: 'Retros and heat that actually moves, picked for a community that already knows prices.' },
+            { n: 'Inventory', h: 'New pairs, every week', p: 'Fresh stock arriving daily and weekly, always brand new. Box included on most pairs, always noted in the listing when it is not.' },
+          ].map((row, i) => (
+            <Reveal key={row.n} delay={i * 90} className="py-10 grid sm:grid-cols-[120px_1fr] gap-4 sm:gap-10 items-baseline">
+              <div className="text-sm font-semibold text-neutral-400">{row.n}</div>
+              <div>
+                <h3 className="text-xl sm:text-2xl font-semibold tracking-tight">{row.h}</h3>
+                <p className="mt-2 text-neutral-600 max-w-2xl">{row.p}</p>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </section>
 
-      {/* ===== MORE SNEAKERS ===== */}
-      <section className="py-14 sm:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-8">
-            <h2 className="text-2xl sm:text-3xl font-bold">All Past Inventory</h2>
-            <Link href="/products" className="flex items-center gap-1 text-gold-400 hover:text-gold-300 transition-colors text-sm">
-              View All <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
+      {/* ===== RESERVE CTA ===== */}
+      <section className="mx-auto max-w-7xl px-6 sm:px-10 py-20 sm:py-28 text-center">
+        <Reveal>
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-neutral-400 mb-4">
+            Authentic &middot; below retail &middot; new stock weekly
+          </p>
+          <h2 className="text-3xl sm:text-5xl font-semibold tracking-tight mb-8">Get what you came for.</h2>
+          <Link
+            href="/products"
+            className="inline-flex items-center justify-center rounded-full bg-black text-white px-8 py-4 text-sm font-semibold tracking-wide hover:bg-neutral-800 transition-colors"
+          >
+            Shop current inventory
+          </Link>
+        </Reveal>
+      </section>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-            {DEMO_PRODUCTS.slice(4, 8).map(product => (
-              <ProductCard key={product.id} product={product} />
+      {/* ===== LIVE PRODUCT GRID ===== */}
+      <section id="inventory" className="border-t border-neutral-200">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 py-16 sm:py-20">
+          <Reveal className="flex items-end justify-between mb-8">
+            <div>
+              <p className="text-xs font-semibold tracking-[0.2em] uppercase text-neutral-400 mb-2">New stock weekly</p>
+              <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight">Current inventory</h3>
+            </div>
+            <Link href="/products" className="flex items-center gap-1.5 text-sm font-medium hover:text-neutral-600 transition-colors shrink-0">
+              View all <ArrowRight className="w-4 h-4" />
+            </Link>
+          </Reveal>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
+            {featured.map((product, i) => (
+              <Reveal key={product.id} delay={(i % 4) * 80}>
+                <ProductTileLight product={product} />
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* ===== REQUEST CTA ===== */}
-      <section className="py-14 sm:py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="card-3d rounded-2xl border border-gold-500/20 bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 sm:p-12 text-center">
-            <p className="text-gold-400 text-xs uppercase tracking-[0.2em] mb-2">Can&apos;t Find Your Size?</p>
-            <h2 className="text-2xl sm:text-3xl font-bold mb-3">Request Any Shoe</h2>
-            <p className="text-white/50 mb-8">
-              Tell us what you need &mdash; we&apos;ll source it and deliver it to you. No upfront cost.
-            </p>
-            <Link
-              href="/request"
-              className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-400 text-black font-bold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(212,160,23,0.3)] text-sm uppercase tracking-wider"
-            >
-              <Send className="w-4 h-4" />
-              Request a Shoe
-            </Link>
-          </div>
-        </div>
+      <section className="border-t border-neutral-200 bg-neutral-50">
+        <Reveal className="mx-auto max-w-2xl px-6 sm:px-10 py-16 sm:py-20 text-center">
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-neutral-400 mb-3">Can&apos;t find your size?</p>
+          <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight mb-4">We can get what you want.</h3>
+          <p className="text-neutral-600 mb-8">
+            Tell us the shoe and the size, and we&apos;ll source it and get it to you. No upfront cost.
+          </p>
+          <Link
+            href="/request"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-black text-white px-7 py-3.5 text-sm font-semibold tracking-wide hover:bg-neutral-800 transition-colors"
+          >
+            <Send className="w-4 h-4" /> Request a shoe
+          </Link>
+        </Reveal>
       </section>
 
       {/* ===== SERVICES ===== */}
-      <section id="services" className="py-14 sm:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <p className="text-gold-400 text-xs uppercase tracking-[0.2em] mb-1">More Than Sneakers</p>
-            <h2 className="text-2xl sm:text-3xl font-bold">Our Services</h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {SERVICES.map(service => (
+      <section id="services" className="mx-auto max-w-7xl px-6 sm:px-10 py-16 sm:py-20">
+        <Reveal className="text-center mb-10">
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-neutral-400 mb-2">More than sneakers</p>
+          <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight">Our services</h3>
+        </Reveal>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {SERVICES.map((service, i) => (
+            <Reveal key={service.slug} delay={(i % 3) * 90}>
               <Link
-                key={service.slug}
                 href={`/services/${service.slug}`}
-                className="group relative h-48 rounded-xl overflow-hidden card-3d hover:-translate-y-1 transition-all duration-300"
+                className="group relative h-[200px] rounded-2xl overflow-hidden block bg-neutral-100"
               >
                 <Image
                   src={service.image_url}
@@ -183,49 +202,46 @@ export default function Home() {
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <h3 className="text-white font-bold text-lg group-hover:text-gold-400 transition-colors">{service.name}</h3>
-                  <p className="text-white/50 text-sm">{service.tagline}</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+                <div className="absolute left-4 bottom-4 right-4">
+                  <h4 className="text-white font-semibold text-lg">{service.name}</h4>
+                  <p className="text-white/75 text-sm">{service.tagline}</p>
                 </div>
               </Link>
-            ))}
-          </div>
+            </Reveal>
+          ))}
         </div>
       </section>
 
       {/* ===== ABOUT ===== */}
-      <section id="about" className="py-14 sm:py-20">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4">About Us</h2>
-          <p className="text-white/50 leading-relaxed">
-            Untouchable Empire delivers premium, authentic products with personal service
-            in Lancaster, PA and surrounding areas. Every item is verified. Free local pickup or delivery.
+      <section id="about" className="border-t border-neutral-200">
+        <Reveal className="mx-auto max-w-2xl px-6 sm:px-10 py-16 sm:py-20 text-center">
+          <p className="text-xs font-semibold tracking-[0.2em] uppercase text-neutral-400 mb-3">About {STORE_CONFIG.name}</p>
+          <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight mb-5">
+            Authentic sneakers, verified in {STORE_CONFIG.location}
+          </h3>
+          <p className="text-neutral-600 leading-relaxed">
+            {STORE_CONFIG.name} brings verified-authentic Jordan, Nike, and Adidas sneakers to{' '}
+            {STORE_CONFIG.location} and the surrounding area, always below retail and always brand new.
+            Every pair is checked before it ships, backed by a money-back guarantee. Most pairs come with
+            their original box; anything boxless or missing a lid is always noted on the product page.
+            Free local pickup or delivery within {STORE_CONFIG.deliveryRadius}.
           </p>
-        </div>
+        </Reveal>
       </section>
 
-      {/* ===== CONTACT ===== */}
-      <section id="contact" className="py-14 sm:py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-6">Ready to Order?</h2>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="bg-gold-500 hover:bg-gold-400 text-black font-bold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(212,160,23,0.3)] flex items-center gap-2 text-sm uppercase tracking-wider">
-              <MessageCircle className="w-4 h-4" />
-              Chat With Us
-            </button>
-            <a
-              href="https://instagram.com/untouchableservices"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-white/20 hover:border-gold-500/50 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2 text-sm uppercase tracking-wider"
-            >
-              <AtSign className="w-4 h-4" />
-              @untouchableservices
+      {/* ===== FOOTER ===== */}
+      <footer className="border-t border-neutral-200">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 py-8 flex flex-wrap items-center justify-between gap-4">
+          <span className="font-semibold tracking-tight">{STORE_CONFIG.name}</span>
+          <span className="text-sm text-neutral-500">
+            Designed &amp; built by{' '}
+            <a href="https://universoleappstudios.com" target="_blank" rel="noopener" className="text-neutral-700 hover:text-black">
+              Universole App Studios
             </a>
-          </div>
+          </span>
         </div>
-      </section>
+      </footer>
     </div>
   );
 }

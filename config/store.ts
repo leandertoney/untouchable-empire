@@ -1,5 +1,5 @@
 export const STORE_CONFIG = {
-  name: 'Untouchable Empire',
+  name: 'Untouchable Deals',
   tagline: 'Authentic Sneakers & Premium Goods',
   location: 'Lancaster, PA',
   deliveryRadius: '10 miles',

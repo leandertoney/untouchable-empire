@@ -10,7 +10,7 @@ export default function CheckoutSuccessPage() {
         </div>
         <h1 className="text-3xl font-bold mb-3">Order Confirmed</h1>
         <p className="text-white/50 mb-2">
-          Thank you for your purchase from Untouchable Empire.
+          Thank you for your purchase from Untouchable Deals.
         </p>
         <p className="text-white/50 mb-8">
           You&apos;ll receive a confirmation email with your order details and fulfillment info shortly.

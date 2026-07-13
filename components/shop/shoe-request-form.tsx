@@ -212,7 +212,7 @@ export default function ShoeRequestForm({
             value={form.notes}
             onChange={(e) => setForm(prev => ({ ...prev, notes: e.target.value }))}
             className="w-full bg-zinc-900 border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-gold-500/50 outline-none resize-none"
-            placeholder="Any preferences — colorway, condition, urgency..."
+            placeholder="Any preferences: colorway, condition, urgency..."
           />
         </div>
       )}

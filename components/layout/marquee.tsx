@@ -1,8 +1,13 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
+
 export default function Marquee() {
+  const pathname = usePathname();
   const text = 'FREE LOCAL PICKUP & DELIVERY\u2003\u2003\u2726\u2003\u2003PRICE MATCH GUARANTEE\u2003\u2003\u2726\u2003\u2003SERVING LANCASTER, PA & SURROUNDING AREAS\u2003\u2003\u2726\u2003\u2003';
   const repeated = text.repeat(8);
+
+  if (pathname === '/') return null;
 
   return (
     <div className="absolute top-0 left-0 right-0 z-[60] bg-gold-500 text-black overflow-hidden whitespace-nowrap">

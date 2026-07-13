@@ -4,10 +4,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ShoppingBag, Menu, X, ChevronDown } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { useCart } from '@/lib/context/cart-context';
 import { SERVICES } from '@/lib/data/services';
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
@@ -25,6 +27,8 @@ export default function Navbar() {
     return () => document.removeEventListener('mousedown', handleClick);
   }, []);
 
+  if (pathname === '/') return null;
+
   return (
     <nav className="absolute top-[28px] left-0 right-0 z-50 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,13 +37,13 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-3">
             <Image
               src="/images/untouchable_logo.png"
-              alt="Untouchable Empire"
+              alt="Untouchable Deals"
               width={80}
               height={80}
               className="rounded mix-blend-lighten"
             />
             <span className="hidden sm:block text-gradient-gold font-bold text-lg tracking-wide">
-              UNTOUCHABLE EMPIRE
+              UNTOUCHABLE DEALS
             </span>
           </Link>
 

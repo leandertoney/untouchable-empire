@@ -9,15 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^9.122.0",
+    "@react-three/fiber": "^8.18.0",
     "@supabase/ssr": "^0.10.2",
     "@supabase/supabase-js": "^2.103.0",
+    "@types/three": "^0.185.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.8.0",
     "next": "14.2.35",
     "react": "^18",
     "react-dom": "^18",
     "stripe": "^22.0.1",
-    "tailwind-merge": "^3.5.0"
+    "tailwind-merge": "^3.5.0",
+    "three": "^0.185.1"
   },
   "devDependencies": {
     "@netlify/plugin-nextjs": "^5.15.9",

@@ -1,8 +1,14 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { AtSign, MessageCircle, Mail } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 export default function Footer() {
+  const pathname = usePathname();
+  if (pathname === '/') return null;
+
   return (
     <footer className="bg-zinc-950 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -11,7 +17,7 @@ export default function Footer() {
           <div className="md:col-span-1">
             <Image
               src="/images/untouchable_logo.png"
-              alt="Untouchable Empire"
+              alt="Untouchable Deals"
               width={80}
               height={80}
               className="rounded mb-4 mix-blend-lighten"
@@ -71,10 +77,10 @@ export default function Footer() {
 
         <div className="mt-10 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/30 text-xs uppercase tracking-wider">
-            Fast. Reliable. Untouchable.
+            Verified Authentic. Below Retail. Guaranteed.
           </p>
           <p className="text-white/30 text-xs">
-            &copy; {new Date().getFullYear()} Untouchable Empire. All rights reserved.
+            &copy; {new Date().getFullYear()} Untouchable Deals. All rights reserved.
           </p>
         </div>
 

@@ -14,7 +14,7 @@ export const SERVICES: Service[] = [
     name: 'Sneakers',
     shortName: 'Sneakers',
     tagline: 'Brand new kicks at unbeatable prices',
-    description: 'Jordan, Nike, Adidas, New Balance, Yeezy — always authentic, always below retail. We source the hottest releases and bring them directly to Lancaster, PA with free pickup or local delivery.',
+    description: 'Jordan, Nike, Adidas, New Balance, Yeezy: always authentic, always below retail. We source the hottest releases and bring them directly to Lancaster, PA with free pickup or local delivery.',
     features: [
       'Always brand new / deadstock',
       'Below retail pricing',
@@ -74,7 +74,7 @@ export const SERVICES: Service[] = [
     name: 'Laundry Essentials',
     shortName: 'Laundry',
     tagline: 'Everyday essentials at wholesale prices',
-    description: 'Stock up on premium laundry products at prices well below the store. Detergent, fabric softener, dryer sheets — bulk and single available.',
+    description: 'Stock up on premium laundry products at prices well below the store. Detergent, fabric softener, dryer sheets: bulk and single available.',
     features: [
       'Premium brands for less',
       'Bulk and single options',
@@ -89,7 +89,7 @@ export const SERVICES: Service[] = [
     name: 'Personal Orders',
     shortName: 'Personal Orders',
     tagline: 'Can\'t find it? We\'ll get it',
-    description: 'Looking for something specific? Tell us what you need and we\'ll source it for you at the best price. No upfront cost — you only pay when we deliver.',
+    description: 'Looking for something specific? Tell us what you need and we\'ll source it for you at the best price. No upfront cost, you only pay when we deliver.',
     features: [
       'Custom sourcing requests',
       'No upfront cost',
